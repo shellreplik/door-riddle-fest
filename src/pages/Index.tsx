@@ -66,9 +66,9 @@ const Index = () => {
   }, [audio, gameActive, speakNumber]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-600 p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
+    <main className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-600 p-8">
+      <article className="max-w-7xl mx-auto">
+        <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-4">Door Clicking Game</h1>
           <p className="text-xl text-white mb-4">Score: {score}</p>
           {gameActive && (
@@ -76,9 +76,9 @@ const Index = () => {
               Find door number {targetDoor}!
             </p>
           )}
-        </div>
+        </header>
         
-        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-4">
+        <section className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-6 gap-4">
           {doors.map((door) => (
             <button
               key={door}
@@ -92,15 +92,17 @@ const Index = () => {
                 "relative",
                 gameActive && targetDoor === door && "animate-bounce"
               )}
+              aria-label={`Door ${door}`}
             >
-              {/* Door Knob */}
-              <div className="absolute right-4 top-1/2 w-4 h-4 bg-yellow-500 rounded-full" />
+              <span className="absolute right-4 top-1/2 w-4 h-4 bg-yellow-500 rounded-full" 
+                    aria-hidden="true" 
+                    role="presentation"></span>
               <span className="text-2xl font-bold text-yellow-500">{door}</span>
             </button>
           ))}
-        </div>
-      </div>
-    </div>
+        </section>
+      </article>
+    </main>
   );
 };
 
